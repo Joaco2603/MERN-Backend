@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const {connectDB} = require('../db/config');
+
 
 class Server{
     constructor(){
@@ -8,6 +10,7 @@ class Server{
 
         this.middlewares();
         this.routes();
+        this.MongoConnect();
     }
     middlewares(){
         this.app.use(express.static('public'));
@@ -15,6 +18,9 @@ class Server{
     }
     routes(){
 
+    }
+    async MongoConnect(){
+        await connectDB();
     }
     listen(){
         this.app.listen(this.port,()=>console.log(`Conectado en el puerto ${this.port}`))
