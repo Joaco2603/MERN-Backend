@@ -16,4 +16,5 @@ router.post('/',[
     validarCampos
 ],nuevo_usuario)
 
+
 module.exports = router;

@@ -1,14 +1,13 @@
-const Users = require('../models/Users');
 const {request,response} = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require("../models/Users");
 const { verificarEmail } = require('../helpers/db-validators');
 
 const get_controller = async(req=request,res=response)=>{
 
     const [total,usuarios] = await Promise.all([
-    Users.countDocuments({ estado: true }),
-    Users.find({ estado: true })
+    User.countDocuments({ estado: true }),
+    User.find({ estado: true })
     ])
 
     res.json({
