@@ -9,6 +9,7 @@ class Server{
         this.port = process.env.PORT || 8080
         this.tienda = '/tienda';
         this.articulos = '/sign'
+        this.product = '/product'
 
         this.middlewares();
         this.routes();
@@ -22,6 +23,7 @@ class Server{
     routes(){
         this.app.use(this.tienda,require('../routes/routes'))
         this.app.use(this.articulos,require('../routes/Sign'))
+        this.app.use(this.product,require('../routes/products'))
     }
     async MongoConnect(){
         await connectDB();
