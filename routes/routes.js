@@ -10,8 +10,8 @@ router.get('/',get_controller)
 
 router.post('/',[
     check('nombre', "El nombre es obligatorio").not().isEmpty(),
-    check('password', "Es obligatorio y debe tener 6 caracteres").isLength({min:6}),
     check('correo').custom( verificarEmail ),
+    check('password', "Es obligatorio y debe tener 6 caracteres").isLength({min:6}),
     check('rol',"No es un rol permitido").isIn(['ADMIN_ROLE','USER_ROLE']),
     validarCampos
 ],nuevo_usuario)

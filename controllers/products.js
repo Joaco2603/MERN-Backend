@@ -54,9 +54,22 @@ const deleteProduct = async(req,res)=>{
     })
 }
 
+
+const carrito = async(req,res)=>{
+     
+    const {id} = req.params;
+    const producto = await Product.findById(id)
+
+    res.json({
+        producto
+    })
+
+}
+
 module.exports = {
     createProduct,
     modificar,
     deleteProduct,
-    get_Products
+    get_Products,
+    carrito
 }
