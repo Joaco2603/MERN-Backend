@@ -1,5 +1,6 @@
 const {Schema,model} = require('mongoose');
 
+//Creamos el schema
 const UserSchema =Schema({
     nombre:{
         type:String,
@@ -33,7 +34,7 @@ const UserSchema =Schema({
 
 })
 
-
+//Filtramos la informacion que se devuelve con funciones de mongoDb
 UserSchema.methods.toJSON = function(){
     const {__v,password,...usuario} = this.toObject();
     return usuario

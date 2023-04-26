@@ -1,5 +1,5 @@
 const moongose = require('mongoose');
-
+//Conecta a la base de datos
 const connectDB = async()=>{
     try {
 

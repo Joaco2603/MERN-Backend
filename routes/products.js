@@ -6,7 +6,10 @@ const {validarCampos} = require('../middlewares/validar_campos')
 const {existeObjectoPorID} = require('../helpers/db-validators')
 
 router.get('/',get_Products)
-router.post('/',createProduct)
+router.post('/',[
+    check('producto', "El producto es obligatorio").not().isEmpty(),
+    validarCampos
+],createProduct)
 router.put('/:id',[
     check('id','No es un ID valido').isMongoId(),
     check('id').custom(existeObjectoPorID),

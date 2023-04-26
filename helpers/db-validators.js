@@ -1,15 +1,15 @@
 
-
+//Schemas
 const User = require('../models/Users');
 const product = require('../models/SchemaProducts')
-
+//Verifica el email si lo consigue
 const verificarEmail = async(correo='')=>{
     const existeEmail = await User.findOne({correo});
     if( existeEmail ){
     throw new Error(`El correo:${correo} ya esta registrado`)
 }
 }
-
+//Busca el id y verifica que exista
 const existeUsuarioPorID = async(id ='')=>{
     const existeID = await User.findById(id);
     if( !existeID ){

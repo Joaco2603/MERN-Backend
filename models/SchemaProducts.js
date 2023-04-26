@@ -1,11 +1,8 @@
 const {Schema,model} = require('mongoose')
 
+//Creamos un schema
 const SchemaProducts = Schema({
 
-    correo:{
-        type:String,
-        require:[true,"El correo es necesario"]
-    },
     producto:{
         type:String,
         require:[true,"El producto es requerido"]
@@ -22,6 +19,7 @@ const SchemaProducts = Schema({
     }
 })
 
+//Filtramos la informacion que retorna de la base de datos
 SchemaProducts.methods.toJSON = function(){
     const{__v,...producto} = this.toObject();
     return producto 

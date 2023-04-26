@@ -1,3 +1,4 @@
+//Importamos npms
 const express = require('express');
 const cors = require('cors');
 const {connectDB} = require('../db/config');
@@ -5,11 +6,13 @@ const {connectDB} = require('../db/config');
 
 class Server{
     constructor(){
+        //utilizamos la funcion de express, asignamos el puerto, ponemos los path, llamamos middlewares, routes, y la conecciona mongo db
         this.app = express();
         this.port = process.env.PORT || 8080
         this.tienda = '/tienda';
         this.articulos = '/sign'
         this.product = '/product'
+        this.uploads = '/uploads'
 
         this.middlewares();
         this.routes();
@@ -19,6 +22,7 @@ class Server{
         this.app.use(cors());
         this.app.use(express.json())
         this.app.use(express.static('public'));
+        // this.app.use(fileUpload({useTempFiles:true,tempFileDir: '/tmp/'}))
     }
     routes(){
         this.app.use(this.tienda,require('../routes/routes'))
