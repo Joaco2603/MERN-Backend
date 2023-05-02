@@ -13,6 +13,10 @@ const SchemaProducts = Schema({
     img:{
         type:String
     },
+    precio:{
+        type:Number,
+        require:[true,"El precio es requerido"]
+    },
     estado:{
         type:Boolean,
         default:true

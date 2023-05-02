@@ -31,8 +31,22 @@ const existeObjectoPorID = async(id ='')=>{
     }
 }
 
+const verificarImg = async(img='')=>{
+
+    const base = img.split(':').pop()
+    const tipo = base.split(';')
+    console.log(tipo[0])
+
+    
+    if(tipo[0] != 'image/png' && 'image/jpg' &&'image/svg'&&'image/bmp'&&'image/jpeg'){
+        throw new Error(`No es una imagen o imagen valida`)
+    }
+
+}
+
 module.exports = {
     verificarEmail,
     existeUsuarioPorID,
-    existeObjectoPorID
+    existeObjectoPorID,
+    verificarImg
 }

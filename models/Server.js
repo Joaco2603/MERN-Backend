@@ -12,7 +12,6 @@ class Server{
         this.tienda = '/tienda';
         this.articulos = '/sign'
         this.product = '/product'
-        this.uploads = '/uploads'
 
         this.middlewares();
         this.routes();
@@ -22,7 +21,6 @@ class Server{
         this.app.use(cors());
         this.app.use(express.json())
         this.app.use(express.static('public'));
-        // this.app.use(fileUpload({useTempFiles:true,tempFileDir: '/tmp/'}))
     }
     routes(){
         this.app.use(this.tienda,require('../routes/routes'))

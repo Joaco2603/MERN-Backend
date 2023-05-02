@@ -3,6 +3,7 @@ const {request,response} = require('express');
 const bcrypt = require('bcryptjs');
 const User = require("../models/Users");
 const { verificarEmail } = require('../helpers/db-validators');
+const {generarJWT} = require('../helpers/generateJWT')
 
 const get_controller = async(req=request,res=response)=>{
 
@@ -20,8 +21,8 @@ const get_controller = async(req=request,res=response)=>{
 const nuevo_usuario = async(req=request,res=response)=>{
 
 
-    const {nombre,correo,password,rol} = req.body;
-    const usuario = new User( {nombre,correo,password,rol} );
+    const {nombre,correo,password,img,rol} = req.body;
+    const usuario = new User( {nombre,correo,password,img,rol} );
     console.log(correo)
     await verificarEmail(correo);
 
@@ -31,7 +32,14 @@ const nuevo_usuario = async(req=request,res=response)=>{
 
     await usuario.save();
 
-    res.json(usuario)
+    const token = await generarJWT(usuario.id);
+
+    res.json({
+        usuario,
+        token
+    })
+
+
 }
 
 

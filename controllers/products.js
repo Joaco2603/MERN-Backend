@@ -16,8 +16,8 @@ const get_Products = async(req=request,res=response)=>{
 
 const createProduct = async(req=request,res=response)=>{
 
-    const {correo,producto,desc,img} = req.body;
-    const product = new Product( {correo,producto,desc,img} );
+    const {correo,producto,desc,precio,img} = req.body;
+    const product = new Product( {correo,producto,precio,desc,img} );
 
     await product.save();
 
